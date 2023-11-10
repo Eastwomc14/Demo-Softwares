@@ -1,0 +1,50 @@
+<!-- FILEPATH: /workspaces/Demo-Softwares/Collins Writer Template Maker/v0.0.01-beta.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Collins Writer Template Maker</title>
+    </head>
+    <body>
+        <h1>Collins Writer Template Maker</h1>
+        <form onsubmit="return false;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date"><br>
+
+            <label for="period">Period:</label>
+            <input type="text" id="period" name="period"><br>
+
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select><br>
+
+            <label for="prompt">Prompt:</label><br>
+            <textarea id="prompt" name="prompt" rows="10" cols="50"></textarea><br>
+
+            <input type="submit" value="Create Template" onclick="displayFormData()">
+        </form>
+
+        <div id="output"></div>
+
+        <script>
+            function displayFormData() {
+                const name = document.getElementById("name").value;
+                const date = document.getElementById("date").value;
+                const period = document.getElementById("period").value;
+                const type = document.getElementById("type").value;
+                const prompt = document.getElementById("prompt").value;
+
+                const output = `Name: ${name}<br>Date: ${date}<br>Period: ${period}<br>Type: ${type}<br>Prompt: ${prompt}`;
+
+                document.getElementById("output").innerHTML = output;
+            }
+        </script>
+    </body>
+</html>

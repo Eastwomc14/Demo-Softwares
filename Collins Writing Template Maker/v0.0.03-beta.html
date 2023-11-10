@@ -1,0 +1,111 @@
+<!-- FILEPATH: /workspaces/Demo-Softwares/Collins Writer Template Maker/v0.0.01-beta.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Collins Writer Template Maker</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #333333;
+            }
+
+            h1 {
+                background-color: #0077be;
+                color: #fff;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+            }
+
+            form {
+                margin: 20px;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #fff;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            select,
+            textarea {
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                font-size: 16px;
+                margin-bottom: 10px;
+                padding: 10px;
+                width: 100%;
+                background-color: #333333;
+                color: #fff;
+            }
+
+            input[type="submit"] {
+                background-color: #0077be;
+                border: none;
+                border-radius: 4px;
+                color: #fff;
+                cursor: pointer;
+                font-size: 16px;
+                margin-top: 10px;
+                padding: 10px;
+                width: 100%;
+            }
+
+            #output {
+                background-color: #4d4d4d;
+                margin: 20px;
+                padding: 20px;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Collins Writer Template Maker</h1>
+        <form onsubmit="return false;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date">
+
+            <label for="period">Period:</label>
+            <input type="text" id="period" name="period">
+
+            <label for="type">Type:</label>
+            <select id="type" name="type">
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <label for="prompt">Prompt:</label>
+            <textarea id="prompt" name="prompt" rows="10" cols="50"></textarea>
+
+            <input type="submit" value="Create Template" onclick="displayFormData()">
+        </form>
+
+        <div id="output"></div>
+
+        <script>
+            function displayFormData() {
+                const name = document.getElementById("name").value;
+                const date = document.getElementById("date").value;
+                const period = document.getElementById("period").value;
+                const type = document.getElementById("type").value;
+                const prompt = document.getElementById("prompt").value;
+
+                const output = `${name}<br>${date}<br>${period}<br>Type: ${type}<br>${prompt}`;
+
+                document.getElementById("output").innerHTML = output;
+            }
+        </script>
+    </body>
+</html>
