@@ -1,0 +1,145 @@
+<!-- FILEPATH: /workspaces/Demo-Softwares/Utils. Package/Slope Finder - Current Version/v0.0.2-beta.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slope Finder</title>
+        <style>
+            body {
+                background-color: #1e1e1e;
+                color: #fff;
+                font-family: Arial, sans-serif;
+            }
+
+            h1 {
+                color: #f0f0f0;
+                text-align: center;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 50px;
+            }
+
+            label {
+                margin-top: 20px;
+                font-size: 20px;
+            }
+
+            input[type="number"] {
+                width: 200px;
+                height: 30px;
+                font-size: 20px;
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                background-color: #2d2d2d;
+                color: #fff;
+            }
+
+            button {
+                margin-top: 30px;
+                width: 200px;
+                height: 40px;
+                font-size: 20px;
+                border-radius: 5px;
+                border: none;
+                background-color: #4caf50;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #3e8e41;
+            }
+
+            #result {
+                margin-top: 50px;
+                font-size: 30px;
+                text-align: center;
+            }
+
+            .convert-button {
+                display: flex;
+                justify-content: center;
+                margin-top: 50px;
+            }
+
+            .convert-button button {
+                width: 150px;
+                height: 30px;
+                font-size: 16px;
+                border-radius: 5px;
+                border: none;
+                background-color: #4caf50;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .convert-button button:hover {
+                background-color: #3e8e41;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Slope Finder</h1>
+        <form>
+            <label for="x1">X1:</label>
+            <input type="number" id="x1" name="x1"><br>
+
+            <label for="y1">Y1:</label>
+            <input type="number" id="y1" name="y1"><br>
+
+            <label for="x2">X2:</label>
+            <input type="number" id="x2" name="x2"><br>
+
+            <label for="y2">Y2:</label>
+            <input type="number" id="y2" name="y2"><br>
+
+            <button type="button" onclick="calculateSlope()">Calculate Slope</button>
+        </form>
+
+        <p id="result"></p>
+
+        <div class="convert-button">
+            <a href="https://www.mouser.com/technical-resources/conversion-calculators/decimal-fraction-calculator" target="_blank"><button>Convert Decimal To Fraction</button></a>
+        </div>
+
+        <script>
+            function calculateSlope() {
+                const x1 = document.getElementById("x1").value;
+                const y1 = document.getElementById("y1").value;
+                const x2 = document.getElementById("x2").value;
+                const y2 = document.getElementById("y2").value;
+
+                const slope = (y2 - y1) / (x2 - x1);
+                const fraction = getFraction(slope);
+
+                document.getElementById("result").innerHTML = `Slope: ${fraction}`;
+            }
+
+            function getFraction(decimal) {
+                const tolerance = 1.0E-6;
+                let h1 = 1;
+                let h2 = 0;
+                let k1 = 0;
+                let k2 = 1;
+                let b = decimal;
+                do {
+                    let a = Math.floor(b);
+                    let aux = h1;
+                    h1 = a * h1 + h2;
+                    h2 = aux;
+                    aux = k1;
+                    k1 = a * k1 + k2;
+                    k2 = aux;
+                    b = 1 / (b - a);
+                } while (Math.abs(decimal - h1 / k1) > decimal * tolerance);
+
+                return `${h1}/${k1}`;
+            }
+        </script>
+    </body>
+</html>

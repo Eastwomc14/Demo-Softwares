@@ -1,0 +1,37 @@
+<!-- FILEPATH: /workspaces/Demo-Softwares/Site BACKUP FILES/Project Lock/Games/Mincraft/main.html -->
+
+<style>
+    .fullscreen-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #183c76;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+</style>
+
+<button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
+
+<iframe id="game-iframe" src="https://sd592g.github.io/zj684od4lfg/" width="100%" height="500px"></iframe>
+
+<script>
+    function toggleFullscreen() {
+        const iframe = document.getElementById('game-iframe');
+        if (!document.fullscreenElement) {
+            iframe.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'F11') {
+            event.preventDefault();
+            toggleFullscreen();
+        }
+    });
+</script>
