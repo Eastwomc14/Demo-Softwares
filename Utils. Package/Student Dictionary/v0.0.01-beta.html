@@ -1,0 +1,76 @@
+<!-- FILEPATH: /workspaces/Demo-Softwares/Utils. Package/Student Dictionary/v0.0.01-beta.html -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Dictionary</title>
+        <style>
+            body {
+                background-color: #1c1c1c;
+                color: #fff;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            h1 {
+                font-size: 3rem;
+                text-align: center;
+                margin-top: 2rem;
+            }
+            form {
+                display: flex;
+                justify-content: center;
+                margin-top: 2rem;
+            }
+            label {
+                font-size: 1.5rem;
+                margin-right: 1rem;
+            }
+            input[type="text"] {
+                padding: 0.5rem;
+                font-size: 1.1rem; /* changed from 1.3rem to 1.1rem */
+                border-radius: 0.5rem;
+                border: none;
+                outline: none;
+            }
+            button[type="button"] {
+                background-color: #4CAF50;
+                color: #fff;
+                padding: 0.5rem 1rem;
+                font-size: 1.5rem;
+                border-radius: 0.5rem;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+            button[type="button"]:hover {
+                background-color: #3e8e41;
+            }
+            #definition {
+                margin-top: 2rem;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Student Dictionary</h1>
+        <form>
+            <label for="word">Enter a word:</label>
+            <input type="text" id="word" name="word" onkeydown="if (event.keyCode === 13) { search(); return false; }">
+        </form>
+        <div id="definition"></div>
+        <script>
+            function search() {
+                const word = document.getElementById("word").value;
+                fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const definition = data[0].meanings[0].definitions[0].definition;
+                        document.getElementById("definition").innerHTML = definition;
+                    })
+                    .catch(error => {
+                        document.getElementById("definition").innerHTML = "Sorry, we couldn't find a definition for that word.";
+                    });
+            }
+        </script>
+    </body>
+</html>
