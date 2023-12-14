@@ -1,0 +1,56 @@
+[
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "enquiries",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "enquiries",
+        "description": "enquiries",
+        "detail": "enquiries",
+        "documentation": {}
+    },
+    {
+        "label": "Country",
+        "kind": 6,
+        "importPath": "Utils. Package.Minigames.thermonuclear war",
+        "description": "Utils. Package.Minigames.thermonuclear war",
+        "peekOfCode": "class Country:\n    def __init__(self, name, army_size, points):\n        self.name = name\n        self.army_size = army_size\n        self.points = points\n    def attack(self, other_country, weapon):\n        loss = weapon.damage\n        loss = min(loss, other_country.army_size)\n        other_country.army_size -= loss\n        other_country.points -= loss",
+        "detail": "Utils. Package.Minigames.thermonuclear war",
+        "documentation": {}
+    },
+    {
+        "label": "Weapon",
+        "kind": 6,
+        "importPath": "Utils. Package.Minigames.thermonuclear war",
+        "description": "Utils. Package.Minigames.thermonuclear war",
+        "peekOfCode": "class Weapon:\n    def __init__(self, name, damage):\n        self.name = name\n        self.damage = damage\ndef launch_attack(attacker, defender, weapons):\n    weapon_name = enquiries.choose(\"Choose your weapon: \", [weapon.name for weapon in weapons])\n    weapon = next(weapon for weapon in weapons if weapon.name == weapon_name)\n    attacker.attack(defender, weapon)\ndef play_game():\n    countries = [Country(\"USA\", 100, 50), Country(\"Russia\", 100, 50), Country(\"China\", 100, 50)]",
+        "detail": "Utils. Package.Minigames.thermonuclear war",
+        "documentation": {}
+    },
+    {
+        "label": "launch_attack",
+        "kind": 2,
+        "importPath": "Utils. Package.Minigames.thermonuclear war",
+        "description": "Utils. Package.Minigames.thermonuclear war",
+        "peekOfCode": "def launch_attack(attacker, defender, weapons):\n    weapon_name = enquiries.choose(\"Choose your weapon: \", [weapon.name for weapon in weapons])\n    weapon = next(weapon for weapon in weapons if weapon.name == weapon_name)\n    attacker.attack(defender, weapon)\ndef play_game():\n    countries = [Country(\"USA\", 100, 50), Country(\"Russia\", 100, 50), Country(\"China\", 100, 50)]\n    weapons = [Weapon(\"Tank\", 10), Weapon(\"Fighter Jet\", 20), Weapon(\"Submarine\", 30), Weapon(\"Missile\", 40)]\n    print(f\"Welcome to the Battlefield game! You are playing as {countries[0].name}.\")\n    while True:\n        for i in range(len(countries)):",
+        "detail": "Utils. Package.Minigames.thermonuclear war",
+        "documentation": {}
+    },
+    {
+        "label": "play_game",
+        "kind": 2,
+        "importPath": "Utils. Package.Minigames.thermonuclear war",
+        "description": "Utils. Package.Minigames.thermonuclear war",
+        "peekOfCode": "def play_game():\n    countries = [Country(\"USA\", 100, 50), Country(\"Russia\", 100, 50), Country(\"China\", 100, 50)]\n    weapons = [Weapon(\"Tank\", 10), Weapon(\"Fighter Jet\", 20), Weapon(\"Submarine\", 30), Weapon(\"Missile\", 40)]\n    print(f\"Welcome to the Battlefield game! You are playing as {countries[0].name}.\")\n    while True:\n        for i in range(len(countries)):\n            attacker = countries[i]\n            defender = countries[(i+1)%len(countries)]\n            launch_attack(attacker, defender, weapons)\n        for country in countries:",
+        "detail": "Utils. Package.Minigames.thermonuclear war",
+        "documentation": {}
+    }
+]
